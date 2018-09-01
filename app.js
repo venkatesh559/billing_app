@@ -1,4 +1,5 @@
 var express = require('express');
+var router = express.Router();
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
@@ -10,11 +11,12 @@ var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var mongo = require('mongodb');
 var mongoose = require('mongoose');
-
+var ejs = require('ejs');
 
 const url = 'mongodb://localhost/loginapp';
 
 mongoose.connect('mongodb://localhost/loginapp');
+
 var db = mongoose.connection;
 
 var routes = require('./routes/index');
@@ -27,8 +29,11 @@ var app = express();
 
 // View Engine
 app.set('views', path.join(__dirname, 'views'));
-app.engine('handlebars', exphbs({defaultLayout:'layout'}));
-app.set('view engine', 'handlebars');
+app.use('/assets', express.static(__dirname + '/public'));
+
+app.set('view engine','ejs');
+//app.engine('handlebars', exphbs({defaultLayout:'layout'}));
+//app.set('view engine', 'handlebars');
 
 // BodyParser Middleware
 app.use(bodyParser.json());
@@ -80,6 +85,14 @@ app.use(expressValidator({
 // Connect Flash
 app.use(flash());
 
+router.get('/logout', function (req, res) {
+  req.logout();
+
+  
+  req.session.destroy();
+  res.redirect('/users/login');
+});
+
 // Global Vars
 app.use(function (req, res, next) {
   res.locals.success_msg = req.flash('success_msg');
@@ -96,7 +109,7 @@ app.use('/users', users);
 app.use('/students',students);
 app.use('/fee',fee);
 // Set Port
-app.set('port', (process.env.PORT || 3000));
+app.set('port', (process.env.PORT || 4000));
 
 app.listen(app.get('port'), function(){
 	console.log('Server started on port '+app.get('port'));

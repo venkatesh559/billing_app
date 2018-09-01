@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <% include ./head.ejs%>
+</head>
+
+<body>
+    <% include ./header.ejs%>
+    <div class="templatemo-content-container" id="subcontent11">
+        <div class="templatemo-content-widget white-bg">
+
+
+          <form action="/users/register" class="templatemo-login-form" method="post">
+
+            
+
+            <div class="row form-group">
+              <div class="col-lg-6 col-md-6 form-group">                  
+                <label for="inputFirstName">Name</label>
+                <input type="text" class="form-control" id="inputFirstName" placeholder="Name" name="name">                  
+              </div>
+              <div class="col-lg-6 form-group">                  
+                <label for="inputLastName">User ID</label>
+                <input type="text" class="form-control" id="inputLastName" placeholder="User ID" name="username">                  
+              </div> 
+            </div>
+            <div class="row form-group">
+              <div class="col-lg-6 col-md-6 form-group">                  
+                <label for="inputUsername">Email</label>
+                <input type="email" class="form-control" id="inputUsername" placeholder="abc@gmail.com" name="email">                  
+              </div>
+              <div class="col-lg-6 form-group">                  
+                <label for="inputEmail">Phone Number</label>
+                <input type="tel" class="form-control" id="inputEmail" placeholder="+91" name="phone">                  
+              </div> 
+            </div><hr>
+            <div class="row form-group">
+              <div class="col-lg-4 col-md-4 form-group">                  
+                <label for="inputNewPassword">Role ID</label>
+                <select name="roleid" class="form-control">
+                    <option value="admin">admin</option>
+                    <option value="tpgs">tpg-school</option>
+                    <option value="tpgi">tpg-inter</option>
+                    <option value="duvvas">duvva-school</option>
+                    <option value="duvvai">duvva-inter</option>
+                  </select>
+              </div>
+              <div class="col-lg-4 form-group">                  
+                <label for="inputConfirmNewPassword">Password</label>
+                <input type="password" class="form-control" id="inputConfirmNewPassword" placeholder="*******" name="password">
+              </div> 
+              <div class="col-lg-4 col-md-4 form-group">                  
+                <label for="inputNewPassword">Confirm Password</label>
+                <input type="text" class="form-control" id="inputNewPassword" placeholder="********" name="password2">
+              </div>
+            </div>
+            
+
+            <div class="form-group text-right">
+              <button type="submit" class="templatemo-blue-button">Submit</button>
+              <button type="reset" class="templatemo-white-button">Reset</button>
+            </div>                           
+          </form>
+        </div>
+      </div>
+</body>
+

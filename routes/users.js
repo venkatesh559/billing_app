@@ -43,9 +43,7 @@ router.post('/changepass' , function(req,res){
 	var password1 = req.body.password1;
 	var password2 = req.body.password2;
 
-	req.checkBody('username', 'Username is required').notEmpty();
-	req.checkBody('password1', 'Password is required').notEmpty();
-	req.checkBody('password2', 'Passwords do not match').equals(req.body.password1);
+	
 
 	var passwordhash = bcrypt.genSalt(10, function(err, salt) {
 	    bcrypt.hash(password1, salt, function(err, hash) {
@@ -162,8 +160,8 @@ router.post('/login',
 router.get('/logout', function (req, res) {
 	req.logout();
 
-	req.flash('success_msg', 'You are logged out');
-
+	
+	req.session = null;
 	res.redirect('/users/login');
 });
 

@@ -39,31 +39,6 @@ function validate(jsonObj){
 
 const url = 'mongodb://localhost/loginapp';
 
-
-  
-
-
-
-//0var template = require('./template.js');
-//app.get('/template', template.get);
-
-
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 router.get('/studentdetails',function(req,res){
 	res.render('studentdetails');
 });
@@ -109,6 +84,9 @@ csv()
     
 
     res.redirect('/');
+    
+    
+    
 
 });
 

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <% include ./head.ejs%>
+    <script>
+    document.querySelector("html").classList.add('js');
+
+var fileInput  = document.querySelector( ".input-file" ),  
+    button     = document.querySelector( ".input-file-trigger" ),
+    the_return = document.querySelector(".file-return");
+      
+button.addEventListener( "keydown", function( event ) {  
+    if ( event.keyCode == 13 || event.keyCode == 32 ) {  
+        fileInput.focus();  
+    }  
+});
+button.addEventListener( "click", function( event ) {
+   fileInput.focus();
+   return false;
+});  
+fileInput.addEventListener( "change", function( event ) {  
+    the_return.innerHTML = this.value;  
+});  
+</script>
+<style>
+    .input-file-container {
+  position: relative;
+  width: 225px;
+} 
+.js .input-file-trigger {
+  display: block;
+  padding: 14px 45px;
+  background: #c00000;
+  color: #fff;
+  font-size: 1em;
+  transition: all .4s;
+  cursor: pointer;
+}
+.js .input-file {
+  position: absolute;
+  top: 0; left: 0;
+  width: 225px;
+  opacity: 0;
+  padding: 14px 0;
+  cursor: pointer;
+}
+.js .input-file:hover + .input-file-trigger,
+.js .input-file:focus + .input-file-trigger,
+.js .input-file-trigger:hover,
+.js .input-file-trigger:focus {
+  background: #34495E;
+  color: #39D2B4;
+}
+
+.file-return {
+  margin: 0;
+}
+.file-return:not(:empty) {
+  margin: 1em 0;
+}
+.js .file-return {
+  font-style: italic;
+  font-size: .9em;
+  font-weight: bold;
+}
+.js .file-return:not(:empty):before {
+  content: "Selected file: ";
+  font-style: normal;
+  font-weight: normal;
+}
+
+</style>
+
+</head>
+
+<body>
+    <% include ./header.ejs%>
+
+        <div class="templatemo-content-container" id="subcontent11">
+            <div class="templatemo-content-widget white-bg">
+                <form action="/fee/feedetails" class="templatemo-login-form" method="post">
+                    <div class="row form-group">
+                        <div class="col-lg-6 col-md-6 form-group"><br><br>                  
+                            <label for="">CHOOSE A CSV FILE </label><br>
+                            <div class="margin-right-15 templatemo-inline-block">
+                                <div class="input-file-container">
+                                <input type="file" name="studentfile" class="input-file" id="my-file">
+                                <label tabindex="0" for="my-file" class="input-file-trigger">Select a file...</label></div>
+                                <p class="file-return"></p>
+                            </div>
+                            <div class="form-group text-right">
+                                <button type="submit" class="templatemo-blue-button">Submit</button>
+                                <button type="reset" class="templatemo-white-button">Reset</button>
+                            </div> 
+                        </div>     
+                    </div>
+                </form>
+             </div></div></div></div>      
+        
+    
+</div><!-- /.container -->
+
+</body>
+
+</html>
