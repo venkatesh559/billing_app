@@ -1,70 +1,124 @@
 <!DOCTYPE html>
-
-<html lang="en">
-
-<head>
-
-    <% include ./head.ejs%>
-</head>
-
-<body>
-    <% include ./header.ejs%>
-    <div class="templatemo-content-container" id="subcontent11">
-        <div class="templatemo-content-widget white-bg">
-
-
-          <form action="/users/register" class="templatemo-login-form" method="post">
-
+<html >
+    <head>
+        <style>
+            body {
+                font-family: Arial, Helvetica, sans-serif;
+                background-color: black;
+            }
             
-
-            <div class="row form-group">
-              <div class="col-lg-6 col-md-6 form-group">                  
-                <label for="inputFirstName">Name</label>
-                <input type="text" class="form-control" id="inputFirstName" placeholder="Name" name="name">                  
-              </div>
-              <div class="col-lg-6 form-group">                  
-                <label for="inputLastName">User ID</label>
-                <input type="text" class="form-control" id="inputLastName" placeholder="User ID" name="username">                  
-              </div> 
-            </div>
-            <div class="row form-group">
-              <div class="col-lg-6 col-md-6 form-group">                  
-                <label for="inputUsername">Email</label>
-                <input type="email" class="form-control" id="inputUsername" placeholder="abc@gmail.com" name="email">                  
-              </div>
-              <div class="col-lg-6 form-group">                  
-                <label for="inputEmail">Phone Number</label>
-                <input type="tel" class="form-control" id="inputEmail" placeholder="+91" name="phone">                  
-              </div> 
-            </div><hr>
-            <div class="row form-group">
-              <div class="col-lg-4 col-md-4 form-group">                  
-                <label for="inputNewPassword">Role ID</label>
-                <select name="roleid" class="form-control">
-                    <option value="admin">admin</option>
-                    <option value="tpgs">tpg-school</option>
-                    <option value="tpgi">tpg-inter</option>
-                    <option value="duvvas">duvva-school</option>
-                    <option value="duvvai">duvva-inter</option>
-                  </select>
-              </div>
-              <div class="col-lg-4 form-group">                  
-                <label for="inputConfirmNewPassword">Password</label>
-                <input type="password" class="form-control" id="inputConfirmNewPassword" placeholder="*******" name="password">
-              </div> 
-              <div class="col-lg-4 col-md-4 form-group">                  
-                <label for="inputNewPassword">Confirm Password</label>
-                <input type="text" class="form-control" id="inputNewPassword" placeholder="********" name="password2">
-              </div>
-            </div>
+            * {
+                box-sizing: border-box;
+            }
             
-
-            <div class="form-group text-right">
-              <button type="submit" class="templatemo-blue-button">Submit</button>
-              <button type="reset" class="templatemo-white-button">Reset</button>
-            </div>                           
-          </form>
-        </div>
+            /* Add padding to containers */
+            .container {
+                padding: 16px;
+                background-color: white;
+            }
+            
+            /* Full-width input fields */
+            input[type=text], input[type=password] {
+                width: 100%;
+                padding: 15px;
+                margin: 5px 0 22px 0;
+                display: inline-block;
+                border: none;
+                background: #f1f1f1;
+            }
+            
+            input[type=text]:focus, input[type=password]:focus {
+                background-color: #ddd;
+                outline: none;
+            }
+            
+            /* Overwrite default styles of hr */
+            hr {
+                border: 1px solid #f1f1f1;
+                margin-bottom: 25px;
+            }
+            
+            /* Set a style for the submit button */
+            .registerbtn {
+                background-color: #4CAF50;
+                color: white;
+                padding: 16px 20px;
+                margin: 8px 0;
+                border: none;
+                cursor: pointer;
+                width: 100%;
+                opacity: 0.9;
+            }
+            
+            .registerbtn:hover {
+                opacity: 1;
+            }
+            
+            /* Add a blue text color to links */
+            a {
+                color: dodgerblue;
+            }
+            
+            /* Set a grey background color and center the text of the "sign in" section */
+            .signin {
+                background-color: #f1f1f1;
+                text-align: center;
+            }
+            </style>
+        </head><body>
+            
+        
+    
+                          
+                                  <form action="/users/register" method="POST">
+                                    <div class="container">
+                                      <h1>Register</h1>
+                                      <p>Please fill in this form to create an account.</p>
+                                      <hr>
+                                  
+                                      <label for="name"><b>Name</b></label>
+                                      <input type="text" placeholder="Enter name" name="name" required>
+                                  
+                                      <label for="uname"><b>Username</b></label>
+                                      <input type="text" placeholder="Enter Username" name="username" required>
+                                  
+                                      <label for="email"><b>Email</b></label>
+                                      <input type="email" placeholder="email" name="email" required>
+                                      <label for="phone"><b>Phone</b></label>
+                                      <input type="tel" placeholder="phone" name="phone" required>
+                                      <label for="role"><b>Role id</b></label>
+                                      <select name="roleid" id="">
+                                          <option value="admin">admin</option>
+                                          <option value="tgps">tpg-school</option>
+                                          <option value="tgpi">tgp-inter</option>
+                                          <option value="duvvas">duvva-school</option>
+                                          <option value="duvvai">duvva-inter</option>
+                                      </select>
+                                      <label for="pwd"><b>password</b></label>
+                                      <input type="password" placeholder="********" name="password" required>
+                                      <label for="pwd"><b>confirm password</b></label>
+                                      <input type="password" placeholder="********" name="password2" required>
+                                      <hr>
+                                      
+                                  
+                                      <button type="submit" class="registerbtn">Register</button>
+                                    </div>
+                                    
+                                    
+                                  </form>
+                          </div>
+                      </div>
+                  </div>
+      
+      
+      
+      
+                      
+              </div>
+              
+          </div>
       </div>
-</body>
+      
+    </body>
+</html>
 

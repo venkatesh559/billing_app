@@ -45,6 +45,8 @@ router.get('/studentdetails',function(req,res){
 
 router.post('/studentdetails',function(req,res){
 
+    console.log("in post method student details");
+
     const csvFilePath= req.body.studentfile
 const csv=require('csvtojson')
 csv()
