@@ -1,124 +1,69 @@
 <!DOCTYPE html>
 <html >
     <head>
-        <style>
-            body {
-                font-family: Arial, Helvetica, sans-serif;
-                background-color: black;
-            }
-            
-            * {
-                box-sizing: border-box;
-            }
-            
-            /* Add padding to containers */
-            .container {
-                padding: 16px;
-                background-color: white;
-            }
-            
-            /* Full-width input fields */
-            input[type=text], input[type=password] {
-                width: 100%;
-                padding: 15px;
-                margin: 5px 0 22px 0;
-                display: inline-block;
-                border: none;
-                background: #f1f1f1;
-            }
-            
-            input[type=text]:focus, input[type=password]:focus {
-                background-color: #ddd;
-                outline: none;
-            }
-            
-            /* Overwrite default styles of hr */
-            hr {
-                border: 1px solid #f1f1f1;
-                margin-bottom: 25px;
-            }
-            
-            /* Set a style for the submit button */
-            .registerbtn {
-                background-color: #4CAF50;
-                color: white;
-                padding: 16px 20px;
-                margin: 8px 0;
-                border: none;
-                cursor: pointer;
-                width: 100%;
-                opacity: 0.9;
-            }
-            
-            .registerbtn:hover {
-                opacity: 1;
-            }
-            
-            /* Add a blue text color to links */
-            a {
-                color: dodgerblue;
-            }
-            
-            /* Set a grey background color and center the text of the "sign in" section */
-            .signin {
-                background-color: #f1f1f1;
-                text-align: center;
-            }
-            </style>
-        </head><body>
-            
-        
-    
-                          
-                                  <form action="/users/register" method="POST">
-                                    <div class="container">
-                                      <h1>Register</h1>
-                                      <p>Please fill in this form to create an account.</p>
-                                      <hr>
-                                  
-                                      <label for="name"><b>Name</b></label>
-                                      <input type="text" placeholder="Enter name" name="name" required>
-                                  
-                                      <label for="uname"><b>Username</b></label>
-                                      <input type="text" placeholder="Enter Username" name="username" required>
-                                  
-                                      <label for="email"><b>Email</b></label>
-                                      <input type="email" placeholder="email" name="email" required>
-                                      <label for="phone"><b>Phone</b></label>
-                                      <input type="tel" placeholder="phone" name="phone" required>
-                                      <label for="role"><b>Role id</b></label>
-                                      <select name="roleid" id="">
-                                          <option value="admin">admin</option>
-                                          <option value="tgps">tpg-school</option>
-                                          <option value="tgpi">tgp-inter</option>
-                                          <option value="duvvas">duvva-school</option>
-                                          <option value="duvvai">duvva-inter</option>
-                                      </select>
-                                      <label for="pwd"><b>password</b></label>
-                                      <input type="password" placeholder="********" name="password" required>
-                                      <label for="pwd"><b>confirm password</b></label>
-                                      <input type="password" placeholder="********" name="password2" required>
-                                      <hr>
-                                      
-                                  
-                                      <button type="submit" class="registerbtn">Register</button>
-                                    </div>
-                                    
-                                    
-                                  </form>
-                          </div>
-                      </div>
-                  </div>
-      
-      
-      
-      
-                      
-              </div>
-              
-          </div>
-      </div>
-      
-    </body>
-</html>
+  <% include ./head.ejs%>
+ 
+</head>
+<body>
+  <% include ./header.ejs%>
+  
 
+  <div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+<!-- !PAGE CONTENT! -->
+<div class="w3-main" style="margin-left:340px;margin-right:40px">
+
+  
+  
+  <!-- Contact -->
+  <div class="w3-container" id="contact" style="margin-top:75px">
+    <h1 class="w3-xxxlarge w3-text-red"><b>ADD EMPLOYEE DETAILS</b></h1>
+    <hr style="width:50px;border:5px solid red" class="w3-round">
+    <p>Enter the employee details</p>
+    <form action="/users/register" method="POST">
+      <div class="w3-section">
+        <label>Name</label>
+        <input class="w3-input w3-border" type="text" name="name" required placeholder="NAME">
+      </div>
+      <div class="w3-section">
+        <label>User name</label>
+        <input class="w3-input w3-border" type="text" name="username" required placeholder="username">
+      </div>
+      <div class="w3-section">
+        <label>Email</label>
+        <input class="w3-input w3-border" type="email" name="email" required placeholder="Email">
+      </div>
+      <div class="w3-section">
+        <label>Phone</label>
+        <input class="w3-input w3-border" type="tel" name="phone" required placeholder="Phone">
+      </div><div class="w3-section">
+        <label>Role ID</label>
+        <select name="roleid" id=""  class="w3-input w3-border">
+            <option value="admin">admin</option>
+            <option value="tpgs">Tpg-school</option>
+            <option value="tpgi">Tpg-inter</option>
+            <option value="duvvas">Duvva-school</option>
+            <option value="duvvai">Duvva-inter</option>
+        </select>
+      </div>
+      <div class="w3-section">
+        <label>Password</label>
+        <input class="w3-input w3-border" type="password" name="password" required placeholder="*********">
+      </div>
+      <div class="w3-section">
+        <label>Confirm Password</label>
+        <input class="w3-input w3-border" type="password" name="password2" required placeholder="*********">
+      </div>
+      <button type="submit" class="w3-button w3-block w3-padding-large w3-red w3-margin-bottom">Add Employee</button>
+    </form>  
+  </div>
+
+<!-- End page content -->
+</div>
+    
+
+
+<% include ./footer.ejs%>
+  
+  </body>
+</html>

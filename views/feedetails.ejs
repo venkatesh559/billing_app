@@ -2,140 +2,37 @@
 <html >
     <head>
   <% include ./head.ejs%>
-  <script>
-        document.querySelector("html").classList.add('js');
-    
-    var fileInput  = document.querySelector( ".input-file" ),  
-        button     = document.querySelector( ".input-file-trigger" ),
-        the_return = document.querySelector(".file-return");
-          
-    button.addEventListener( "keydown", function( event ) {  
-        if ( event.keyCode == 13 || event.keyCode == 32 ) {  
-            fileInput.focus();  
-        }  
-    });
-    button.addEventListener( "click", function( event ) {
-       fileInput.focus();
-       return false;
-    });  
-    fileInput.addEventListener( "change", function( event ) {  
-        the_return.innerHTML = this.value;  
-    });  
-    </script>
-    <style>
-        .input-file-container {
-      position: relative;
-      width: 225px;
-    } 
-    .js .input-file-trigger {
-      display: block;
-      padding: 14px 45px;
-      background: #c00000;
-      color: #fff;
-      font-size: 1em;
-      transition: all .4s;
-      cursor: pointer;
-    }
-    .js .input-file {
-      position: absolute;
-      top: 0; left: 0;
-      width: 225px;
-      opacity: 0;
-      padding: 14px 0;
-      cursor: pointer;
-    }
-    .js .input-file:hover + .input-file-trigger,
-    .js .input-file:focus + .input-file-trigger,
-    .js .input-file-trigger:hover,
-    .js .input-file-trigger:focus {
-      background: #34495E;
-      color: #39D2B4;
-    }
-    
-    .file-return {
-      margin: 0;
-    }
-    .file-return:not(:empty) {
-      margin: 1em 0;
-    }
-    .js .file-return {
-      font-style: italic;
-      font-size: .9em;
-      font-weight: bold;
-    }
-    .js .file-return:not(:empty):before {
-      content: "Selected file: ";
-      font-style: normal;
-      font-weight: normal;
-    }
-    
-    </style>
+ 
 </head>
 <body>
   <% include ./header.ejs%>
   
 
-<section class="engine"><a href="#">bootstrap responsive templates</a></section><section class="cid-qTkA127IK8 mbr-fullscreen mbr-parallax-background" id="header2-1">
+  <div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
 
-    
+<!-- !PAGE CONTENT! -->
+<div class="w3-main" style="margin-left:340px;margin-right:40px">
 
-    
+  
+  
+  <!-- Contact -->
+  <div class="w3-container" id="contact" style="margin-top:75px">
+    <h1 class="w3-xxxlarge w3-text-red"><b>ADD FEE DETAILS</b></h1>
+    <hr style="width:50px;border:5px solid red" class="w3-round">
+    <p>Choose a csv file to upload</p>
+    <form action="/fee/feedetails" method="POST">
+      <div class="w3-section">
+        <label>Choose a file</label>
+        <input class="w3-input w3-border" type="file" name="studentfile" required>
+      </div>
+      
+      <button type="submit" class="w3-button w3-block w3-padding-large w3-red w3-margin-bottom">Send Message</button>
+    </form>  
+  </div>
 
-  <div class="container align-center">
-    <div class="row justify-content-md-center">
-        <div class="mbr-white col-md-10">
-         
-
-
-
-
-                <div class="container">
-                    <div class="row justify-content-center">
-                        <div class="title col-12 col-lg-8">
-                            <h2 class="mbr-section-title align-center pb-3 mbr-fonts-style display-2">
-                                FEE DETAILS
-                            </h2>
-                            <h3 class="mbr-section-subtitle align-center mbr-light pb-3 mbr-fonts-style display-5">
-                                upload a csv file 
-                            </h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="container">
-                    <div class="row justify-content-center">
-                        <div class="media-container-column col-lg-8" data-form-type="formoid">
-                                <div data-form-alert="" hidden="">
-                                    Thanks for filling out the form!
-                                </div>
-                        
-                                <form class="mbr-form" action="/students/studentdetails" method="post" data-form-title="Mobirise Form"><input type="hidden" name="studentfile" data-form-email="true" value="tZmZPQ1UxpJRNBjEWZa+dyS4b1PvkVMReHZmR18HhBEi3Ghe2K9e8qi7d8dqRRGEGzWb6xgdm2irAxQ23WnAGi/3ARm6uX+H8eDBtNp77bfB2WXBqvMW5OpShGXCqllA" data-form-field="File">
-                                    <div class="row row-sm-offset">
-                                        <div class="col-md-12 multi-horizontal" data-for="name">
-                                            <div class="form-group">
-                                                <div class="margin-right-15 templatemo-inline-block">
-                                                    <div class="input-file-container">
-                                                    <input type="file" name="studentfile" class="input-file" id="my-file" required ="">
-                                                    <label tabindex="0" for="my-file" class="input-file-trigger" >Select a file...</label></div>
-                                                    <p class="file-return"></p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        
-                                        
-                                       </div>
-                        
-                                    <span class="input-group-btn">
-                                        <button type="submit" class="btn btn-primary btn-form display-4">UPLOAD</button>
-                                    </span>
-                                </form>
-                        </div>
-                    </div>
-                </div>
-        
-    </div>
+<!-- End page content -->
 </div>
     
-</section>
 
 
 <% include ./footer.ejs%>
