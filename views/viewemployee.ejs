@@ -54,23 +54,24 @@ li a:hover:not(.active) {
       <li><a class="w3-hover-white" href="#about">UPDATE</a></li>
     </ul>
     <hr style="width:50px;border:5px solid red" class="w3-round">
-    <p>Enter the employee details</p>
-    <form action="/users/register" method="POST">
-      <div class="w3-section">
-        <label>Name</label>
-        <input class="w3-input w3-border" type="text" name="name" required placeholder="NAME">
-      </div>
+    <p>View the employee details</p>
+    <form action="/users/viewempolyee" method="POST">
+      
       <div class="w3-section">
         <label>User name</label>
-        <input class="w3-input w3-border" type="text" name="username" required placeholder="username">
+        <input class="w3-input w3-border" type="text" name="username"  placeholder="username">
       </div>
       <div class="w3-section">
+            <label>Name</label>
+            <input class="w3-input w3-border" type="text" name="name"  placeholder="NAME">
+          </div>
+      <div class="w3-section">
         <label>Email</label>
-        <input class="w3-input w3-border" type="email" name="email" required placeholder="Email">
+        <input class="w3-input w3-border" type="email" name="email"  placeholder="Email">
       </div>
       <div class="w3-section">
         <label>Phone</label>
-        <input class="w3-input w3-border" type="tel" name="phone" required placeholder="Phone">
+        <input class="w3-input w3-border" type="tel" name="phone"  placeholder="Phone">
       </div><div class="w3-section">
         <label>Role ID</label>
         <select name="roleid" id=""  class="w3-input w3-border">
@@ -83,13 +84,13 @@ li a:hover:not(.active) {
       </div>
       <div class="w3-section">
         <label>Password</label>
-        <input class="w3-input w3-border" type="password" name="password" required placeholder="*********">
+        <input class="w3-input w3-border" type="password" name="password"  placeholder="*********">
       </div>
       <div class="w3-section">
         <label>Confirm Password</label>
-        <input class="w3-input w3-border" type="password" name="password2" required placeholder="*********">
+        <input class="w3-input w3-border" type="password" name="password2"  placeholder="*********">
       </div>
-      <button type="submit" class="w3-button w3-block w3-padding-large w3-red w3-margin-bottom">Add Employee</button>
+      <button type="submit" class="w3-button w3-block w3-padding-large w3-red w3-margin-bottom">VIEW EMPLOYEE</button>
     </form>  
   </div>
 

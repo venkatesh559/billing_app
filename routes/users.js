@@ -7,7 +7,11 @@ var bcrypt = require('bcryptjs');
 
 
 
+
 var User = require('../models/user');
+var role;
+
+this.rolepub = role;
 
 //var url = "mongodb://127.0.0.1:27017/";
 var url = "mongodb://localhost/loginapp";
@@ -15,9 +19,10 @@ var url = "mongodb://localhost/loginapp";
 
 
 // Register
-router.get('/register', function (req, res) {
-	res.render('register');
-});
+//router.get('/register', function (req, res) {
+//	res.render('register')
+
+//});
 
 // Login
 router.get('/login', function (req, res) {
@@ -36,8 +41,15 @@ router.get('/changepass',function(req,res){
 router.get('/employeedetails',function(req,res){
 	res.render('employeedetails');
 });
+
+router.get('/viewemployee',function(req,res){
+	res.render('viewemployee');
+});
 //Change password db
 
+router.get('/deleteemployee',function(req,res){
+	res.render('deleteemployee');
+});
 router.post('/changepass' , function(req,res){
 	var username = req.body.username;
 	var password1 = req.body.password1;
@@ -69,6 +81,8 @@ router.post('/changepass' , function(req,res){
 // Register User
 router.post('/register', function (req, res) {
 	var name = req.body.name;
+	var phone = req.body.name;
+	var roleid = req.body.roleid;
 	var email = req.body.email;
 	var username = req.body.username;
 	var password = req.body.password;
@@ -108,7 +122,10 @@ router.post('/register', function (req, res) {
 						name: name,
 						email: email,
 						username: username,
-						password: password
+						password: password,
+						name :name,
+						phone:phone,
+						roleid:roleid
 					});
 					User.createUser(newUser, function (err, user) {
 						if (err) throw err;
@@ -151,11 +168,43 @@ passport.deserializeUser(function (id, done) {
 	});
 });
 
+router.post('/viewempolyee',function(req,res){
+	
+		MongoClient.connect(url, function(err, db) {
+			if (err) throw err;
+			var dbo = db.db("loginapp");
+		var emp = dbo.collection('users').find({username: req.body.username});
+		emp.each(function(err,doc){
+			if(doc!=null){
+			console.log(doc);
+			
+		console.log(typeof doc);
+		
+			}
+			
+		});
+	});
+	
+});
+router.post('/deleteemployee',function(req,res){
+	MongoClient.connect(url,function(err,db){
+		if(err) throw err;
+		var dbo = db.db("loginapp");
+		var emp = dbo.collection('users').deleteOne({username : req.body.username});
+		res.redirect('/deleteemployee');
+	});
+});
+
 router.post('/login',
 	passport.authenticate('local', { successRedirect: '/', failureRedirect: '/users/login', failureFlash: true }),
 	function (req, res) {
-		res.redirect('/');
-	});
+		this.req = req
+
+		console.log(this.req)
+		
+		//res.redirect('/');
+	
+});
 
 router.get('/logout', function (req, res) {
 	req.logout();
@@ -166,5 +215,6 @@ router.get('/logout', function (req, res) {
 });
 
 module.exports = router;
+module.exports.role = this.rolepub ;
 
 

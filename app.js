@@ -20,6 +20,7 @@ mongoose.connect('mongodb://localhost/loginapp');
 var db = mongoose.connection;
 
 var routes = require('./routes/index');
+
 var users = require('./routes/users');
 var students = require('./routes/students');
 var fee = require('./routes/fee');
@@ -105,9 +106,11 @@ app.use(function (req, res, next) {
 
 
 app.use('/', routes);
+
 app.use('/users', users);
 app.use('/students',students);
 app.use('/fee',fee);
+
 // Set Port
 app.set('port', (process.env.PORT || 4000));
 

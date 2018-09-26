@@ -1,9 +1,19 @@
 var express = require('express');
 var router = express.Router();
+var users = require('./users');
+
+
 
 // Get Homepage
 router.get('/', ensureAuthenticated, function(req, res){
-	res.render('index');
+	console.log(req.user.roleid);
+	if(req.user.roleid=="admin"){
+		res.render('index');}
+	
+		if(req.user.roleid!="admin"){
+			res.render('index1');}
+		
+	
 });
 
 function ensureAuthenticated(req, res, next){
