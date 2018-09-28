@@ -5,7 +5,8 @@ var LocalStrategy = require('passport-local').Strategy;
 var MongoClient = require('mongodb').MongoClient;
 var bcrypt = require('bcryptjs');
 
-
+var app=express();
+var viewemployee = require('../views/viewemployee')
 
 
 var User = require('../models/user');
@@ -37,13 +38,12 @@ router.get('/changepass',function(req,res){
 
 
 
-
 router.get('/employeedetails',function(req,res){
 	res.render('employeedetails');
 });
 
 router.get('/viewemployee',function(req,res){
-	res.render('viewemployee');
+	res.render('viewemployee' , {employee : []});
 });
 //Change password db
 
@@ -81,7 +81,7 @@ router.post('/changepass' , function(req,res){
 // Register User
 router.post('/register', function (req, res) {
 	var name = req.body.name;
-	var phone = req.body.name;
+	var phone = req.body.phone;
 	var roleid = req.body.roleid;
 	var email = req.body.email;
 	var username = req.body.username;
@@ -112,7 +112,7 @@ router.post('/register', function (req, res) {
 				"$regex": "^" + email + "\\b", "$options": "i"
 		}}, function (err, mail) {
 				if (user || mail) {
-					res.render('register', {
+					res.render('employeedetails', {
 						user: user,
 						mail: mail
 					});
@@ -123,8 +123,8 @@ router.post('/register', function (req, res) {
 						email: email,
 						username: username,
 						password: password,
-						name :name,
-						phone:phone,
+						
+						phone: phone,
 						roleid:roleid
 					});
 					User.createUser(newUser, function (err, user) {
@@ -173,16 +173,15 @@ router.post('/viewempolyee',function(req,res){
 		MongoClient.connect(url, function(err, db) {
 			if (err) throw err;
 			var dbo = db.db("loginapp");
-		var emp = dbo.collection('users').find({username: req.body.username});
-		emp.each(function(err,doc){
-			if(doc!=null){
-			console.log(doc);
-			
-		console.log(typeof doc);
+		var emp = dbo.collection('users').find({username: req.body.username}).toArray(function(err, result) {
+			if (err) throw err;
+			console.log(result);
+			db.close();
 		
-			}
+		 res.render('viewemployee', {employee : result});
+			});
 			
-		});
+		
 	});
 	
 });
@@ -208,11 +207,20 @@ router.post('/login',
 
 router.get('/logout', function (req, res) {
 	req.logout();
-
 	
-	req.session = null;
-	res.redirect('/users/login');
-});
+	
+  
+	
+	req.session.destroy(function(err) {
+	  if(err) {
+		console.log(err);
+	  } else {
+		res.redirect('/users/login');
+	  }
+  
+  });
+  
+  });
 
 module.exports = router;
 module.exports.role = this.rolepub ;

@@ -17,7 +17,7 @@ var UserSchema = mongoose.Schema({
 		type: String
 	},
 	phone :{
-		type : String
+		type : Number
 
 	},
 	roleid :{
@@ -50,4 +50,8 @@ module.exports.comparePassword = function(candidatePassword, hash, callback){
     	if(err) throw err;
     	callback(null, isMatch);
 	});
+}
+
+module.exports.getEmployee = (callback,limit) => {
+	User.find(callback).limit(limit);
 }

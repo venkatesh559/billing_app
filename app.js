@@ -46,7 +46,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Express Session
 app.use(session({
-    secret: 'secret',
+    secret: 'djhxcvxfgshjfgjhgsjhfgakjeauytsdfy',
     saveUninitialized: true,
     resave: true
 }));
@@ -86,13 +86,9 @@ app.use(expressValidator({
 // Connect Flash
 app.use(flash());
 
-router.get('/logout', function (req, res) {
-  req.logout();
 
-  
-  req.session.destroy();
-  res.redirect('/users/login');
-});
+
+
 
 // Global Vars
 app.use(function (req, res, next) {
